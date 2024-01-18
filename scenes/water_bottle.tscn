@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://tlkwygfv8us4"]
+
+[ext_resource type="Script" path="res://scripts/client_freeze.gd" id="1_5gkrw"]
+[ext_resource type="Texture2D" uid="uid://caq2i86v1suf4" path="res://assets/waterbottle.png" id="1_erpkn"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="3_t6kxg"]
+
+[node name="WaterBottle" type="RigidBody2D"]
+script = ExtResource("1_5gkrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("1_erpkn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.52, 0.52)
+polygon = PackedVector2Array(-4, -128, -28, -121, -28, -83, -48, -60, -56, -31, -55, -9, -50, 15, -45, 29, -48, 41, -56, 63, -57, 78, -54, 99, -45, 118, -31, 127, -2, 130, 32, 125, 44, 116, 56, 92, 57, 69, 53, 52, 44, 28, 53, 8, 56, -14, 55, -43, 49, -64, 30, -83, 28, -118, 11, -127)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("3_t6kxg")]

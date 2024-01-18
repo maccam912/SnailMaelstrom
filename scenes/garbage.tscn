@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c14ir3iqvi8nw"]
+
+[ext_resource type="Script" path="res://scripts/client_freeze.gd" id="1_3yb8c"]
+[ext_resource type="Texture2D" uid="uid://67eoyjyy18f" path="res://assets/garbage.png" id="1_c1j0d"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="3_akau4"]
+
+[node name="Garbage" type="RigidBody2D"]
+script = ExtResource("1_3yb8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.559999, 0.559999)
+texture = ExtResource("1_c1j0d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.560001, 0.560001)
+polygon = PackedVector2Array(-40, -118, -21, -128, -3, -131, 15, -129, 42, -119, 23, -90, 51, -74, 87, -43, 114, -3, 127, 31, 130, 55, 125, 79, 108, 106, 130, 118, 126, 126, 86, 131, 76, 126, 36, 135, -21, 136, -63, 127, -84, 131, -126, 126, -127, 117, -105, 104, -125, 79, -128, 53, -126, 26, -105, -17, -71, -58, -40, -81, -24, -90, -45, -111)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("3_akau4")]
