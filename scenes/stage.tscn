@@ -1,63 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtahmcqcst45j"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_r5p2e"]
-normal = Vector2(0.99998, 0.00632899)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8i372"]
-normal = Vector2(-0.999986, 0.00520826)
+[gd_scene load_steps=2 format=3 uid="uid://dtahmcqcst45j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t83b0"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bj1lr"]
-normal = Vector2(0, 1)
 
 [node name="Stage" type="Node2D"]
 
 [node name="Floor" type="StaticBody2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Floor"]
-offset_left = -3.0
-offset_top = 557.0
-offset_right = 1163.0
-offset_bottom = 664.0
-color = Color(0.443137, 0.745098, 0.419608, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="Floor"]
-offset_left = -176.0
-offset_top = -98.0
-offset_right = 5.0
-offset_bottom = 656.0
-color = Color(0.443137, 0.745098, 0.419608, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="Floor"]
-offset_left = 1153.0
-offset_top = -86.0
-offset_right = 1334.0
-offset_bottom = 668.0
-color = Color(0.443137, 0.745098, 0.419608, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="Floor"]
-offset_left = -6.0
-offset_top = -92.0
-offset_right = 1160.0
-offset_bottom = 15.0
-color = Color(0.443137, 0.745098, 0.419608, 1)
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
-position = Vector2(5, 300)
-shape = SubResource("WorldBoundaryShape2D_r5p2e")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Floor"]
-position = Vector2(1153, 273)
-shape = SubResource("WorldBoundaryShape2D_8i372")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(558, 558)
+position = Vector2(200, 550)
 shape = SubResource("WorldBoundaryShape2D_t83b0")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
-position = Vector2(542, 17)
-shape = SubResource("WorldBoundaryShape2D_bj1lr")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player.tscn")
@@ -71,3 +22,14 @@ spawn_limit = 100
 [node name="Players" type="Node" parent="."]
 
 [node name="Props" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-10, -345)
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+build_mode = 1
+polygon = PackedVector2Array(-25, 80, 56, 252, 189, 361, 451, 501, 691, 579, 1181, 654, 1376, 651, 1517, 621, 1548, 588, 1573, 535, 1620, 541, 1624, 739, 1848, 751, 1846, 540, 2078, 546, 2139, 504, 2176, 554, 2213, 502, 2286, 544, 2346, 549, 2395, 501, 2416, 551, 2592, 557, 2583, 90, 2613, 85, 2676, 1007, -226, 937, -226, 53)
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionPolygon2D"]
+polygon = PackedVector2Array(-25, 88, 7, 161, 52, 248, 119, 314, 197, 371, 380, 470, 648, 559, 784, 591, 951, 621, 1054, 638, 1224, 654, 1365, 654, 1475, 641, 1529, 610, 1563, 569, 1574, 538, 1616, 541, 1609, 750, 1857, 751, 1843, 547, 2082, 545, 2137, 507, 2175, 556, 2214, 505, 2291, 546, 2342, 547, 2391, 501, 2424, 555, 2591, 558, 2585, 92, 2612, 87, 2669, 1013, 1365, 966, -232, 931, -223, 66)

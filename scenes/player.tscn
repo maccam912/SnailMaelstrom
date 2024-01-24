@@ -74,6 +74,8 @@ polygon = PackedVector2Array(-13, -1, -11, -4, -8, -6, -5, -7, -2, -6, 1, -3, 6,
 [node name="MotionPrediction" parent="." instance=ExtResource("3_3pvrb")]
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.03
+delta_interval = 0.03
 replication_config = SubResource("SceneReplicationConfig_v15oi")
 
 [connection signal="button_up" from="Camera2D/CanvasLayer/Jump" to="." method="_on_jump_button_up"]

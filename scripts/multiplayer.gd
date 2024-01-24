@@ -1,6 +1,6 @@
 extends Node
 
-@export var address = "wss://websocket.snail.koski.co";
+@export var address = "wss://snail.koski.co/ws";
 @export var port = 8910;
 @export var i = 1;
 
