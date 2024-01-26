@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b38itm8p0op4k"]
+
+[ext_resource type="Texture2D" uid="uid://ba5e3ndryv208" path="res://assets/stick.png" id="1_vxe8l"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="2_f4ji2"]
+
+[node name="Stick" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vxe8l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-336, 223, -193, 106, -199, 7, -192, -3, -160, -7, -144, 7, -137, 96, -99, 87, -42, 9, -81, -102, -76, -114, -45, -128, -33, -123, -1, -37, 53, -87, 54, -215, 62, -227, 98, -227, 107, -216, 109, -89, 141, -89, 189, -172, 166, -264, 171, -274, 204, -285, 214, -280, 230, -220, 300, -278, 313, -271, 340, -246, 339, -228, 243, -150, 205, -90, 284, -85, 295, -77, 295, -45, 283, -30, 145, -34, 72, -24, 6, 48, 35, 51, 116, 24, 128, 28, 144, 63, 139, 80, 73, 101, -25, 100, -45, 125, 21, 171, 25, 186, 3, 216, -10, 217, -101, 151, -163, 168, -285, 281, -299, 285, -320, 270, -340, 244)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("2_f4ji2")]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcy0i6jdvibdt"]
+
+[ext_resource type="Texture2D" uid="uid://dbvlcwgwycxrp" path="res://assets/rock.png" id="1_r7ook"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="2_j2lws"]
+
+[node name="StaticRock" type="RigidBody2D"]
+freeze = true
+freeze_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_r7ook")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-340, -40, -321, -89, -283, -146, -242, -180, -208, -187, -188, -213, -152, -243, -116, -256, -74, -256, -19, -280, 48, -291, 92, -288, 155, -273, 210, -239, 261, -191, 290, -129, 307, -92, 318, -39, 311, -19, 327, 10, 337, 42, 341, 84, 339, 121, 333, 145, 316, 170, 294, 192, 270, 204, 244, 213, 210, 219, 197, 231, 178, 249, 157, 263, 132, 274, 106, 283, 77, 290, 41, 293, 2, 289, -29, 285, -85, 272, -128, 259, -152, 245, -176, 225, -222, 215, -253, 203, -282, 187, -301, 170, -318, 146, -329, 121, -335, 72, -341, -18)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("2_j2lws")]

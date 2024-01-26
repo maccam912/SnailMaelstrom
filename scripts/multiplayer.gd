@@ -9,11 +9,6 @@ var peer = WebSocketMultiplayerPeer.new()
 
 var player_scenes = {}
 
-var cup_scene = preload("res://scenes/cup.tscn")
-var waterbottle_scene = preload("res://scenes/water_bottle.tscn")
-var garbage_scene = preload("res://scenes/garbage.tscn")
-
-	
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().root.set_multiplayer_authority(1)
@@ -41,25 +36,21 @@ func start_server():
 	call_deferred("spawn_props")
 
 func spawn_props():
-	var cup = cup_scene.instantiate()
-	cup.set_multiplayer_authority(1)
-	cup.position = Vector2(150, 150)
-	var waterbottle = waterbottle_scene.instantiate()
-	waterbottle.set_multiplayer_authority(1)
-	waterbottle.position = Vector2(250, 150)
-	var garbage = garbage_scene.instantiate()
-	garbage.set_multiplayer_authority(1)
-	garbage.position = Vector2(350, 150)
-	
 	var current_scene = get_tree().get_current_scene()
+	var spawner: MultiplayerSpawner = current_scene.get_node("PropSpawner")
 	var props_container = current_scene.get_node("Props")
-	if props_container:
-		props_container.add_child(cup, true)
-		props_container.add_child(waterbottle, true)
-		props_container.add_child(garbage, true)
-		print("Added props")
-	else:
-		printerr("No props container!")
+	for i in range(spawner.get_spawnable_scene_count()):
+		var res_path = spawner.get_spawnable_scene(i)
+		var res = load(res_path)
+		var scene = res.instantiate()
+		scene.set_multiplayer_authority(1)
+		var x = 200*i+200
+		print(x)
+		scene.position = Vector2(x, 250)
+		if props_container:
+			props_container.add_child(scene, true)
+		else:
+			printerr("No props container!")
 
 func start_client():
 	var err = peer.create_client(address)
@@ -87,7 +78,10 @@ func add_player(new_peer_id: int) -> void:
 	var new_player = player_scene.instantiate()
 	new_player.set_multiplayer_authority(1)
 	# Set an initial position for the new player
-	new_player.position = Vector2(250, 250)
+	var spawn = get_tree().root.get_node("/root/Stage/Spawn")
+	var spawn_loc = spawn.position
+	print("Moved to spawn loc")
+	new_player.position = spawn_loc
 
 	# Set the network master for the new player instance
 	new_player.player_id = new_peer_id

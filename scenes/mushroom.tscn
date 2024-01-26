@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ykjmgygaxo3"]
+
+[ext_resource type="Texture2D" uid="uid://cjw4o7gvthqe4" path="res://assets/mushroom.png" id="1_3vqkb"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="2_1bxxn"]
+
+[node name="Mushroom" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vqkb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-125, 325, -126, 246, -123, 185, -115, 122, -230, 122, -278, 100, -311, 49, -319, -25, -310, -86, -275, -165, -231, -225, -177, -272, -115, -304, -39, -322, 24, -322, 84, -310, 142, -285, 205, -244, 265, -175, 293, -121, 315, -61, 320, -5, 313, 45, 288, 92, 233, 122, 177, 125, 117, 122, 122, 196, 122, 328)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("2_1bxxn")]

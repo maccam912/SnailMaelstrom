@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr362cgvdhvv2"
-path="res://.godot/imported/Background_1.png-2dba1b6a18ca04c8cd366425fce2eff9.ctex"
+uid="uid://4gg8x32c6ahk"
+path="res://.godot/imported/starrysky.png-5182bc9756a18ae5e9f1de690a4e1757.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background_1.png"
-dest_files=["res://.godot/imported/Background_1.png-2dba1b6a18ca04c8cd366425fce2eff9.ctex"]
+source_file="res://assets/starrysky.png"
+dest_files=["res://.godot/imported/starrysky.png-5182bc9756a18ae5e9f1de690a4e1757.ctex"]
 
 [params]
 

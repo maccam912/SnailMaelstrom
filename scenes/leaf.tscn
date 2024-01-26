@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqt6mus2n2why"]
+
+[ext_resource type="Texture2D" uid="uid://danqt3yog5j3l" path="res://assets/leaf.png" id="1_qj1qd"]
+[ext_resource type="PackedScene" uid="uid://cddsths0uaii0" path="res://scenes/motion_prediction.tscn" id="2_y351w"]
+
+[node name="Leaf" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qj1qd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-339, 220, -308, 193, -270, 160, -285, 134, -299, 79, -299, 21, -290, -29, -262, -91, -225, -141, -168, -189, -114, -220, -33, -252, 56, -276, 161, -290, 234, -294, 330, -294, 344, -291, 339, -262, 325, -200, 295, -94, 255, 8, 214, 83, 167, 144, 97, 195, 29, 222, -36, 235, -102, 238, -152, 232, -196, 218, -217, 254, -240, 280, -271, 296, -293, 296, -316, 287, -339, 260, -345, 240)
+
+[node name="MotionPrediction" parent="." instance=ExtResource("2_y351w")]
