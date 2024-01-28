@@ -3,6 +3,7 @@ extends Node
 @export var address = "wss://snail.koski.co/ws";
 @export var port = 8910;
 @export var i = 1;
+@export var speed = 1200;
 
 var connected_peer_ids = []
 var peer = WebSocketMultiplayerPeer.new()
@@ -33,7 +34,7 @@ func start_server():
 	peer.peer_connected.connect(_on_peer_connected)
 	peer.peer_disconnected.connect(_on_peer_disconnected)
 	print("Server is up and running.")
-	call_deferred("spawn_props")
+	#call_deferred("spawn_props")
 
 func spawn_props():
 	var current_scene = get_tree().get_current_scene()
@@ -145,9 +146,11 @@ func handle_input(action):
 	var player: RigidBody2D = player_scenes[id]
 	match action:
 		"GoLeft":
-			player.apply_central_force(Vector2(-500, 0))
+			player.apply_torque_impulse(-speed)
+			#player.apply_central_force(Vector2(-500, 0))
 		"GoRight":
-			player.apply_central_force(Vector2(500, 0))
+			player.apply_torque_impulse(speed)
+			#player.apply_central_force(Vector2(500, 0))
 		"Jump":
 			player.apply_central_impulse(Vector2(0, -500))
 			print("gave player jump ", player)

@@ -1,30 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtahmcqcst45j"]
+[gd_scene load_steps=5 format=3 uid="uid://dtahmcqcst45j"]
 
-[ext_resource type="Texture2D" uid="uid://4gg8x32c6ahk" path="res://assets/starrysky.png" id="1_fj33t"]
-[ext_resource type="PackedScene" uid="uid://b3v8nm7pexpmg" path="res://scenes/brick_platform.tscn" id="2_t1d76"]
+[ext_resource type="Texture2D" uid="uid://cnop4tof56dya" path="res://assets/tiled_starrysky.png" id="1_ksxx6"]
+[ext_resource type="Script" path="res://scenes/Terrain.gd" id="1_wox25"]
+[ext_resource type="Texture2D" uid="uid://dr4kj1ep46ke2" path="res://assets/dirt.png" id="6_7uj0t"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_t83b0"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_kj4eb"]
-normal = Vector2(0, 1)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iya2y"]
-normal = Vector2(0.999971, 0.00763337)
+[sub_resource type="Curve2D" id="Curve2D_bv5yi"]
+bake_interval = 100.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1016, 1735, 0, 0, 0, 0, -1307, 1773, 0, 0, 0, 0, -1419, 203, -114.164, -266.382, 114.164, 266.382, -169, 331, -290.167, -199.787, 290.167, 199.787, -180, 1090, -780.12, 242.598, 780.12, -242.598, 2243, 1052, -309.194, 394.817, 309.194, -394.817, 3686, -564, -619.366, -395.113, 619.366, 395.113, 5860, -654, -555.293, -266.968, 555.293, 266.968, 7929, 1928, -242.324, 135.417, 242.324, -135.417, 9870, 1943, -85.5263, 57.0175, 85.5263, -57.0175, 10786, 1170, -78.3991, -114.035, 78.3991, 114.035, 11206, 1134, -135.417, -78.3991, 135.417, 78.3991, 11182, 3159, -85.5263, 92.6535, 85.5263, -92.6535, 12141, 3195, -192.434, 121.162, 192.434, -121.162, 12105, 1553, -377.741, -121.162, 377.741, 121.162, 13172, 2081, -211.428, 113.265, 211.428, -113.265, 15066, 2152, -166.122, 173.673, 166.122, -173.673, 15749, 1158, -377.55, 317.142, 377.55, -317.142, 16720, 474, -339.795, 317.142, 339.795, -317.142, 17295, -1959, 0, 0, 0, 0, 19033, -1899, 0, 0, 0, 0, 19033, 4466, 0, 0, 0, 0, 5219, 4162, 0, 0, 0, 0, 1016, 1735)
+}
+point_count = 24
 
 [node name="Stage" type="Node2D"]
-
-[node name="Floor" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
-position = Vector2(2053, 1536)
-shape = SubResource("WorldBoundaryShape2D_t83b0")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
-position = Vector2(799, -904)
-shape = SubResource("WorldBoundaryShape2D_kj4eb")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
-shape = SubResource("WorldBoundaryShape2D_iya2y")
 
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://scenes/player.tscn")
@@ -40,31 +27,30 @@ spawn_limit = 100
 [node name="Props" type="Node" parent="."]
 
 [node name="Spawn" type="Node2D" parent="."]
-position = Vector2(58, -326)
+position = Vector2(255, -364)
 
 [node name="Level" type="Node" parent="."]
+
+[node name="Terrain" type="StaticBody2D" parent="."]
+script = ExtResource("1_wox25")
+
+[node name="Path2D" type="Path2D" parent="Terrain"]
+position = Vector2(211, -264)
+curve = SubResource("Curve2D_bv5yi")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Terrain"]
+polygon = PackedVector2Array(-1654, -291, -1690, -641, -571, -883, -471, -462)
+
+[node name="Polygon2D" type="Polygon2D" parent="Terrain"]
+texture = ExtResource("6_7uj0t")
+polygon = PackedVector2Array(-1490, -633, -663, -790, -599, -519, -1397, -370)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1024, 1024)
+motion_mirroring = Vector2(4096, 4096)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-texture = ExtResource("1_fj33t")
+texture = ExtResource("1_ksxx6")
 centered = false
-
-[node name="BrickPlatform" parent="." instance=ExtResource("2_t1d76")]
-position = Vector2(305, 786)
-
-[node name="BrickPlatform2" parent="." instance=ExtResource("2_t1d76")]
-position = Vector2(1011, 1173)
-
-[node name="BrickPlatform3" parent="." instance=ExtResource("2_t1d76")]
-position = Vector2(1713, 817)
-
-[node name="BrickPlatform4" parent="." instance=ExtResource("2_t1d76")]
-position = Vector2(-59, 1200)
-
-[node name="BrickPlatform5" parent="." instance=ExtResource("2_t1d76")]
-position = Vector2(-396, 966)

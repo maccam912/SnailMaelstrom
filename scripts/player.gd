@@ -27,11 +27,13 @@ func _process(_delta):
 		get_node("Camera2D").zoom *= 1.1
 	if Input.is_action_just_released("ZoomOut"):
 		get_node("Camera2D").zoom *= 0.9
+		if get_node("Camera2D").zoom.x < 0.25:
+			get_node("Camera2D").zoom = Vector2(0.25, 0.25)
 
 func _on_jump_button_up():
 	Input.action_press("Jump")
 	Input.action_release("Jump")
-
+"res://assets/starrysky-transformed.png"
 func _on_left_button_down():
 	Input.action_press("GoLeft")
 
